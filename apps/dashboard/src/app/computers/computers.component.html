@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="col-50">
+    <ngrx-computers-computers-list
+      [computers]="computers$ | async"
+      (selected)="selectComputer($event)"
+      (deleted)="deleteComputer($event)"
+    >
+    </ngrx-computers-computers-list>
+  </div>
+
+  <div class="col-50">
+    <ngrx-computers-computers-details
+      [form]="form"
+      [computer]="selectedComputer$ | async"
+      (saved)="saveComputer($event)"
+      (cancelled)="resetComputer()"
+    >
+    </ngrx-computers-computers-details>
+  </div>
+</div>

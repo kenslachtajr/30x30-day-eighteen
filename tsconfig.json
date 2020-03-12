@@ -15,7 +15,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@ngrx-computers/core-data": ["libs/core-data/src/index.ts"],
+      "@ngrx-computers/material": ["libs/material/src/index.ts"],
+      "@ngrx-computers/ui-login": ["libs/ui-login/src/index.ts"],
+      "@ngrx-computers/core-state": ["libs/core-state/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

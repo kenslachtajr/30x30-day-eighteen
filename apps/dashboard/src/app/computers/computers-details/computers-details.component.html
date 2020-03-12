@@ -1,0 +1,77 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <h1>
+        <span *ngIf="currentComputer.id; else elseBlock">{{
+          originalTitle
+        }}</span>
+        <ng-template #elseBlock>Select A Computer</ng-template>
+      </h1>
+    </mat-card-title>
+  </mat-card-header>
+
+  <form [formGroup]="form" (submit)="saved.emit(currentComputer)">
+    <mat-card-content>
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Make"
+          formControlName="make"
+          type="text"
+          name="make"
+        />
+        <mat-error *ngIf="form.get('make')">Required Field</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          type="text"
+          name="name"
+        />
+        <mat-error *ngIf="form.get('name')">Required Field</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="RAM"
+          formControlName="ram"
+          type="text"
+          name="ram"
+        />
+        <mat-error *ngIf="form.get('ram')">Required Field</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <input
+          matInput
+          placeholder="Is Desktop"
+          formControlName="isDesktop"
+          type="text"
+          name="isDesktop"
+        />
+        <mat-error *ngIf="form.get('isDesktop')">Required Field</mat-error>
+      </mat-form-field>
+      <mat-card-actions>
+        <button
+          type="submit"
+          [disabled]="form.invalid"
+          mat-button
+          color="primary"
+        >
+          {{ currentComputer.id ? 'Save' : 'Create' }}
+        </button>
+        <button
+          type="button"
+          mat-button
+          (click)="cancelled.emit(currentComputer)"
+        >
+          Cancel
+        </button>
+      </mat-card-actions>
+    </mat-card-content>
+  </form>
+</mat-card>
